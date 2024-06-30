@@ -254,7 +254,22 @@ public class Game
         }
     }
 
-    internal class Program
+    private void ResetGame()
+    {
+        deck.InitializeDeck();
+        deck.Shuffle();
+
+        player.Hand.Clear();
+        player.Points = 0;
+
+        computer.Hand.Clear();
+        computer.Points = 0;
+
+        playerTurn = true;
+    }
+}
+
+internal class Program
     {
         static void Main(string[] args) { }
     }
