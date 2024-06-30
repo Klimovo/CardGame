@@ -101,6 +101,18 @@ public class Deck
     }
 }
 
+public class Player
+{
+    public List<Card> Hand { get; set; }
+    public int Points { get; set; }
+
+    public Player()
+    {
+        Hand = new List<Card>();
+        Points = 0;
+    }
+}
+
 internal class Program
     {
         static void Main(string[] args) { }
