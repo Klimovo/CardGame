@@ -113,7 +113,26 @@ public class Player
     }
 }
 
-internal class Program
+public class Game
+{
+    private Deck deck;
+    private Player player;
+    private Player computer;
+    private bool playerTurn;
+
+    public Game()
+    {
+        deck = new Deck();
+        deck.Shuffle();
+
+        player = new Player();
+        computer = new Player();
+
+        playerTurn = true;
+    }
+
+
+    internal class Program
     {
         static void Main(string[] args) { }
     }
