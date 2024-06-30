@@ -159,7 +159,7 @@ public class Game
             else
             {
                 Console.WriteLine("Computer's turn.");
-                if (computer.Points < 17) // Computer takes card if less than 17 points
+                if (ComputerDecides())
                 {
                     DealCard(computer);
                 }
@@ -178,6 +178,14 @@ public class Game
             }
         }
     }
+
+    private bool ComputerDecides()
+    {
+        // Implement computer's decision-making logic here
+        // Example: Computer draws a card if its points are less than 17
+        return computer.Points < 17;
+    }
+
     private void DisplayGameStatus()
     {
         Console.WriteLine($"Your points: {player.Points}");
