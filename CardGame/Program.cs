@@ -206,6 +206,13 @@ public class Game
         deckCards.RemoveAt(0);
     }
 
+    private bool AskPlayerForAction()
+    {
+        Console.WriteLine("Do you want to take another card? (y/n)");
+        string response = Console.ReadLine().ToLower();
+        return response == "y";
+    }
+
     internal class Program
     {
         static void Main(string[] args) { }
