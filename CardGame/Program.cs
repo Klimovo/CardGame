@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 public enum Suit
 {
     Hearts,
@@ -10,6 +11,7 @@ public enum Suit
     Clubs,
     Spades
 }
+
 public enum Rank
 {
     Ace = 11,
@@ -22,6 +24,18 @@ public enum Rank
     Seven = 7,
     Six = 6
 }
+
+public class Card
+{
+    public Suit Suit { get; set; }
+    public Rank Rank { get; set; }
+
+    public override string ToString()
+    {
+        return $"{Rank} of {Suit}";
+    }
+}
+
 internal class Program
 {
     static void Main(string[] args)
