@@ -178,6 +178,24 @@ public class Game
             }
         }
     }
+    private void DisplayGameStatus()
+    {
+        Console.WriteLine($"Your points: {player.Points}");
+        Console.WriteLine("Your cards:");
+        foreach (var card in player.Hand)
+        {
+            Console.WriteLine($"  {card}");
+        }
+        Console.WriteLine();
+
+        Console.WriteLine($"Computer's points: {computer.Points}");
+        Console.WriteLine("Computer's cards:");
+        foreach (var card in computer.Hand)
+        {
+            Console.WriteLine($"  {card}");
+        }
+        Console.WriteLine();
+    }
 
 
     internal class Program
