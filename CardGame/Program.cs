@@ -36,7 +36,29 @@ public class Card
     }
 }
 
-internal class Program
+public class Deck
+{
+    private List<Card> cards;
+
+    public Deck()
+    {
+        InitializeDeck();
+    }
+
+    public void InitializeDeck()
+    {
+        cards = new List<Card>();
+
+        foreach (Suit suit in Enum.GetValues(typeof(Suit)))
+        {
+            foreach (Rank rank in Enum.GetValues(typeof(Rank)))
+            {
+                cards.Add(new Card { Suit = suit, Rank = rank });
+            }
+        }
+    }
+
+    internal class Program
 {
     static void Main(string[] args)
     {
