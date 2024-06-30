@@ -58,9 +58,50 @@ public class Deck
         }
     }
 
-    internal class Program
-{
-    static void Main(string[] args)
+    public void Shuffle()
     {
+        Random rng = new Random();
+        int n = cards.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            Card value = cards[k];
+            cards[k] = cards[n];
+            cards[n] = value;
+        }
+    }
+
+    public List<Card> GetCards()
+    {
+        return cards;
+    }
+
+    public List<int> FindAcePositions()
+    {
+        List<int> positions = new List<int>();
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if (cards[i].Rank == Rank.Ace)
+            {
+                positions.Add(i);
+            }
+        }
+        return positions;
+    }
+
+    public void MoveAllSpadesToTop()
+    {
+        cards = cards.OrderBy(card => card.Suit != Suit.Spades).ToList();
+    }
+
+    public void Sort()
+    {
+        cards.Sort((card1, card2) => card1.Rank.CompareTo(card2.Rank));
     }
 }
+
+internal class Program
+    {
+        static void Main(string[] args) { }
+    }
