@@ -197,6 +197,14 @@ public class Game
         Console.WriteLine();
     }
 
+    private void DealCard(Player player)
+    {
+        List<Card> deckCards = deck.GetCards();
+        Card dealtCard = deckCards.First();
+        player.Hand.Add(dealtCard);
+        player.Points += (int)dealtCard.Rank;
+        deckCards.RemoveAt(0);
+    }
 
     internal class Program
     {
