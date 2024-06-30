@@ -131,6 +131,54 @@ public class Game
         playerTurn = true;
     }
 
+    public void Start()
+    {
+        // Initial deal
+        DealCard(player);
+        DealCard(computer);
+        DealCard(player);
+        DealCard(computer);
+
+        while (true)
+        {
+            Console.Clear();
+            DisplayGameStatus();
+
+            if (playerTurn)
+            {
+                Console.WriteLine("Your turn.");
+                if (AskPlayerForAction())
+                {
+                    DealCard(player);
+                }
+                else
+                {
+                    playerTurn = false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Computer's turn.");
+                if (computer.Points < 17) // Computer takes card if less than 17 points
+                {
+                    DealCard(computer);
+                }
+                else
+                {
+                    playerTurn = true;
+                }
+                Console.WriteLine("Press Enter to continue...");
+                Console.ReadLine();
+            }
+
+            if (player.Points >= 21 || computer.Points >= 21)
+            {
+                EndGame();
+                break;
+            }
+        }
+    }
+
 
     internal class Program
     {
