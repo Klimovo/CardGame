@@ -213,6 +213,47 @@ public class Game
         return response == "y";
     }
 
+    private void EndGame()
+    {
+        Console.Clear();
+        DisplayGameStatus();
+
+        if ((player.Points == 21 || player.Hand.Any(card => card.Rank == Rank.Ace)) &&
+            (computer.Points != 21 && !computer.Hand.Any(card => card.Rank == Rank.Ace)))
+        {
+            Console.WriteLine("Congratulations! You win!");
+        }
+        else if ((computer.Points == 21 || computer.Hand.Any(card => card.Rank == Rank.Ace)) &&
+            (player.Points != 21 && !player.Hand.Any(card => card.Rank == Rank.Ace)))
+        {
+            Console.WriteLine("Sorry, computer wins.");
+        }
+        else if (player.Points > 21 && computer.Points > 21)
+        {
+            Console.WriteLine("Both players exceeded 21 points. It's a draw.");
+        }
+        else if (player.Points > 21)
+        {
+            Console.WriteLine("You exceeded 21 points. Computer wins.");
+        }
+        else if (computer.Points > 21)
+        {
+            Console.WriteLine("Computer exceeded 21 points. You win.");
+        }
+        else
+        {
+            Console.WriteLine("Game ended.");
+        }
+
+        Console.WriteLine("Press Enter to play again or 'q' to quit.");
+        string restart = Console.ReadLine().ToLower();
+        if (restart != "q")
+        {
+            ResetGame();
+            Start();
+        }
+    }
+
     internal class Program
     {
         static void Main(string[] args) { }
